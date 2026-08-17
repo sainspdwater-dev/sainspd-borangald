@@ -13,6 +13,9 @@
     <!-- Material Symbols Rounded -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
     
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
     <style>
         :root {
             /* SAINS Corporate Blue Palette */
@@ -612,6 +615,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- Section Keselamatan: Cloudflare Turnstile -->
+        <div class="form-section center-content">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAESW6QgvNozKsaUK" data-theme="light"></div>
+        </div>
+
     </form>
 </main>
 
@@ -852,6 +861,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.other-input input').forEach(i => i.required = false);
         dmaSelect.innerHTML = '<option value="" disabled selected>Sila pilih Zon dahulu</option>';
         dmaSelect.disabled = true;
+        
+        if (typeof turnstile !== 'undefined') turnstile.reset();
     }
     document.getElementById('btnReset').addEventListener('click', resetForm);
 
@@ -863,6 +874,13 @@ document.addEventListener('DOMContentLoaded', function() {
             form.reportValidity();
             return;
         }
+
+        const formData = new FormData(form);
+        if (!formData.get('cf-turnstile-response')) {
+            showError("Sila sahkan anda bukan robot pada bahagian keselamatan di bawah borang.");
+            return;
+        }
+
         showModal(confirmModal);
     });
 
@@ -910,11 +928,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 showModal(successModal);
             } else {
                 showError("Ralat Penyimpanan: " + response.error);
+                if (typeof turnstile !== 'undefined') turnstile.reset();
             }
         })
         .catch(error => {
             hideAllModals();
             showError("Ralat Sistem: Pengkalan data tidak dapat dihubungi. " + error.message);
+            if (typeof turnstile !== 'undefined') turnstile.reset();
         });
     });
 
