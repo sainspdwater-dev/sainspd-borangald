@@ -5,332 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sains NRW Reporting</title>
     
-    <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Material Symbols Rounded -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,1,0" rel="stylesheet" />
-    
-    <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
     <style>
         :root {
-            /* SAINS Corporate Blue Palette */
             --md-sys-color-primary: #0056b3; 
             --md-sys-color-on-primary: #ffffff;
             --md-sys-color-primary-container: #d6e3ff;
             --md-sys-color-on-primary-container: #001b3e;
-            
             --md-sys-color-secondary: #565e71;
             --md-sys-color-on-secondary: #ffffff;
-            
             --md-sys-color-background: #fdfbff;
-            --md-sys-color-surface: rgba(255, 255, 255, 0.9); /* Glass base */
+            --md-sys-color-surface: rgba(255, 255, 255, 0.9);
             --md-sys-color-surface-variant: #e1e2ec;
-            
             --md-sys-color-error: #ba1a1a;
             --md-sys-color-success: #198754;
-            
             --border-radius-sm: 8px;
             --border-radius-md: 12px;
             --border-radius-lg: 24px;
             --border-radius-full: 9999px;
-            
             --shadow-1: 0 2px 4px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
             --shadow-2: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
             --shadow-3: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-            
             --transition-standard: 200ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: #e8f0fe;
-            background-image: linear-gradient(135deg, #e8f0fe 0%, #c4d7f6 100%);
-            background-attachment: fixed;
-            color: #1a1c1e;
-            padding-bottom: 90px;
-            min-height: 100vh;
-        }
-
-        .app-header {
-            background: var(--md-sys-color-primary);
-            color: var(--md-sys-color-on-primary);
-            padding: 16px 20px;
-            box-shadow: var(--shadow-2);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .logo-icon {
-            font-size: 40px;
-            background: rgba(255,255,255,0.2);
-            padding: 8px;
-            border-radius: 50%;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background-color: #e8f0fe; background-image: linear-gradient(135deg, #e8f0fe 0%, #c4d7f6 100%); background-attachment: fixed; color: #1a1c1e; padding-bottom: 90px; min-height: 100vh; }
+        .app-header { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); padding: 16px 20px; box-shadow: var(--shadow-2); position: sticky; top: 0; z-index: 10; }
+        .header-content { max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo-container { display: flex; align-items: center; gap: 16px; }
+        .logo-icon { font-size: 40px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 50%; }
         .header-titles h1 { font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
         .header-titles h2 { font-size: 0.85rem; font-weight: 400; opacity: 0.9; }
         .header-titles h3 { font-size: 0.75rem; font-weight: 300; opacity: 0.8; margin-top: 2px; }
-
-        .header-time {
-            font-size: 0.85rem;
-            text-align: right;
-            background: rgba(0,0,0,0.15);
-            padding: 6px 12px;
-            border-radius: var(--border-radius-full);
-            backdrop-filter: blur(4px);
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 24px auto;
-            padding: 0 16px;
-        }
-
-        .glass-card {
-            background: var(--md-sys-color-surface);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-3);
-            overflow: hidden;
-        }
-
-        .form-section {
-            padding: 24px;
-            border-bottom: 1px solid var(--md-sys-color-surface-variant);
-        }
+        .header-time { font-size: 0.85rem; text-align: right; background: rgba(0,0,0,0.15); padding: 6px 12px; border-radius: var(--border-radius-full); backdrop-filter: blur(4px); }
+        .main-container { max-width: 800px; margin: 24px auto; padding: 0 16px; }
+        .glass-card { background: var(--md-sys-color-surface); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.5); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-3); overflow: hidden; }
+        .form-section { padding: 24px; border-bottom: 1px solid var(--md-sys-color-surface-variant); }
         .form-section:last-child { border-bottom: none; }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--md-sys-color-primary);
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        @media (min-width: 600px) {
-            .form-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-        }
-
-        .input-group {
-            margin-bottom: 16px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-group label {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #44474e;
-            margin-bottom: 6px;
-            margin-left: 4px;
-        }
-
+        .section-title { display: flex; align-items: center; gap: 8px; color: var(--md-sys-color-primary); font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; }
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+        @media (min-width: 600px) { .form-grid { grid-template-columns: 1fr 1fr; gap: 20px; } }
+        .input-group { margin-bottom: 16px; display: flex; flex-direction: column; }
+        .input-group label { font-size: 0.85rem; font-weight: 500; color: #44474e; margin-bottom: 6px; margin-left: 4px; }
         .required { color: var(--md-sys-color-error); }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .input-icon {
-            position: absolute;
-            left: 12px;
-            color: #74777f;
-            font-size: 20px;
-            pointer-events: none;
-        }
-
-        input[type="text"], input[type="date"], select, textarea {
-            width: 100%;
-            padding: 12px 12px 12px 40px;
-            border: 1px solid #74777f;
-            border-radius: var(--border-radius-sm);
-            font-size: 0.95rem;
-            background: rgba(255,255,255,0.9);
-            color: #1a1c1e;
-            transition: var(--transition-standard);
-            appearance: none;
-        }
-
+        .input-wrapper { position: relative; display: flex; align-items: center; }
+        .input-icon { position: absolute; left: 12px; color: #74777f; font-size: 20px; pointer-events: none; }
+        input[type="text"], input[type="date"], select, textarea { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #74777f; border-radius: var(--border-radius-sm); font-size: 0.95rem; background: rgba(255,255,255,0.9); color: #1a1c1e; transition: var(--transition-standard); appearance: none; }
         textarea { resize: vertical; min-height: 80px; }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--md-sys-color-primary);
-            box-shadow: 0 0 0 2px var(--md-sys-color-primary-container);
-            background: #ffffff;
-        }
-        
-        input:disabled, select:disabled {
-            background-color: #f0f0f0;
-            color: #a0a0a0;
-            cursor: not-allowed;
-            border-color: #d0d0d0;
-        }
-
-        .dropdown-icon {
-            position: absolute;
-            right: 12px;
-            color: #74777f;
-            pointer-events: none;
-        }
-
-        .icon-btn {
-            position: absolute;
-            right: 4px;
-            background: none;
-            border: none;
-            padding: 8px;
-            color: var(--md-sys-color-primary);
-            cursor: pointer;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            transition: var(--transition-standard);
-        }
-
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--md-sys-color-primary); box-shadow: 0 0 0 2px var(--md-sys-color-primary-container); background: #ffffff; }
+        input:disabled, select:disabled { background-color: #f0f0f0; color: #a0a0a0; cursor: not-allowed; border-color: #d0d0d0; }
+        .dropdown-icon { position: absolute; right: 12px; color: #74777f; pointer-events: none; }
+        .icon-btn { position: absolute; right: 4px; background: none; border: none; padding: 8px; color: var(--md-sys-color-primary); cursor: pointer; border-radius: 50%; display: grid; place-items: center; transition: var(--transition-standard); }
         .icon-btn:hover { background: var(--md-sys-color-primary-container); }
-
         .helper-text { font-size: 0.75rem; color: #74777f; margin-top: 4px; margin-left: 4px; }
-
-        .other-input {
-            animation: slideDown 0.3s ease-out forwards;
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .bottom-bar {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            z-index: 10;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 24px;
-            border-radius: var(--border-radius-full);
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            transition: var(--transition-standard);
-            min-width: 140px;
-        }
-
+        .other-input { animation: slideDown 0.3s ease-out forwards; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.5); box-shadow: 0 -4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 16px; z-index: 10; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 24px; border-radius: var(--border-radius-full); font-size: 0.95rem; font-weight: 500; cursor: pointer; border: none; transition: var(--transition-standard); min-width: 140px; }
         .btn-primary { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); box-shadow: var(--shadow-1); }
         .btn-primary:hover { background: #004a99; box-shadow: var(--shadow-2); }
         .btn-secondary { background: transparent; color: var(--md-sys-color-primary); border: 1px solid #74777f; }
         .btn-secondary:hover { background: rgba(0, 86, 179, 0.08); border-color: var(--md-sys-color-primary); }
         .btn-text { background: transparent; color: var(--md-sys-color-secondary); }
         .btn-text:hover { background: rgba(86, 94, 113, 0.08); }
-
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
-            z-index: 100; display: none; opacity: 0; transition: opacity 0.3s ease;
-        }
-
-        .modal {
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            background: white; border-radius: var(--border-radius-lg);
-            width: 90%; max-width: 400px;
-            z-index: 101; box-shadow: var(--shadow-3);
-            display: none; opacity: 0;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 24px;
-        }
-
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); z-index: 100; display: none; opacity: 0; transition: opacity 0.3s ease; }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); background: white; border-radius: var(--border-radius-lg); width: 90%; max-width: 400px; z-index: 101; box-shadow: var(--shadow-3); display: none; opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 24px; }
         .modal.active, .modal-overlay.active { display: block; opacity: 1; }
         .modal.active { transform: translate(-50%, -50%) scale(1); }
-
         .modal-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
         .modal-header h3 { font-size: 1.25rem; color: #1a1c1e; }
         .modal-body { color: #44474e; font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px; }
         .modal-footer { display: flex; justify-content: flex-end; gap: 8px; }
-        
         .justify-center { justify-content: center; }
         .center-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-
         .text-primary { color: var(--md-sys-color-primary); }
         .text-danger { color: var(--md-sys-color-error); }
         .text-success { color: var(--md-sys-color-success); }
         .mt-2 { margin-top: 8px; }
         .mt-3 { margin-top: 16px; }
-
-        .spinner {
-            width: 48px; height: 48px;
-            border: 4px solid var(--md-sys-color-primary-container);
-            border-top: 4px solid var(--md-sys-color-primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
+        .spinner { width: 48px; height: 48px; border: 4px solid var(--md-sys-color-primary-container); border-top: 4px solid var(--md-sys-color-primary); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .success-animation { color: var(--md-sys-color-success); }
-        .success-animation .material-symbols-rounded {
-            font-size: 64px;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            80% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        
+        .success-animation .material-symbols-rounded { font-size: 64px; animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes popIn { 0% { transform: scale(0); opacity: 0; } 80% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
         @media (max-width: 480px) {
             .header-content { flex-direction: column; gap: 12px; align-items: flex-start; }
             .header-time { align-self: flex-end; }
@@ -352,21 +115,14 @@
                 <h3>Port Dickson</h3>
             </div>
         </div>
-        <div class="header-time" id="currentDateTime">
-            Loading...
-        </div>
+        <div class="header-time" id="currentDateTime">Loading...</div>
     </div>
 </header>
 
 <main class="main-container">
     <form id="nrwForm" class="glass-card">
-        
-        <!-- Section: Maklumat Asas -->
         <div class="form-section">
-            <h3 class="section-title">
-                <span class="material-symbols-rounded">info</span> Maklumat Asas
-            </h3>
-            
+            <h3 class="section-title"><span class="material-symbols-rounded">info</span> Maklumat Asas</h3>
             <div class="form-grid">
                 <div class="input-group">
                     <label for="tarikh">Tarikh <span class="required">*</span></label>
@@ -375,7 +131,6 @@
                         <input type="date" id="tarikh" name="tarikh" required>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <label for="noAduan">No Aduan</label>
                     <div class="input-wrapper">
@@ -387,12 +142,8 @@
             </div>
         </div>
 
-        <!-- Section: Lokasi -->
         <div class="form-section">
-            <h3 class="section-title">
-                <span class="material-symbols-rounded">location_on</span> Maklumat Lokasi
-            </h3>
-            
+            <h3 class="section-title"><span class="material-symbols-rounded">location_on</span> Maklumat Lokasi</h3>
             <div class="form-grid">
                 <div class="input-group">
                     <label for="zon">Zon <span class="required">*</span></label>
@@ -404,7 +155,6 @@
                         <span class="material-symbols-rounded dropdown-icon">arrow_drop_down</span>
                     </div>
                 </div>
-
                 <div class="input-group">
                     <label for="dma">DMA/DMZ <span class="required">*</span></label>
                     <div class="input-wrapper">
@@ -416,7 +166,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="input-group">
                 <label for="alamat">Alamat <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -424,7 +173,6 @@
                     <textarea id="alamat" name="alamat" required placeholder="Alamat penuh lokasi..."></textarea>
                 </div>
             </div>
-
             <div class="input-group">
                 <label for="coordinates">Koordinat GPS <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -438,13 +186,9 @@
             </div>
         </div>
 
-        <!-- Section: Butiran Kerosakan -->
         <div class="form-section">
-            <h3 class="section-title">
-                <span class="material-symbols-rounded">build</span> Butiran Kerosakan
-            </h3>
+            <h3 class="section-title"><span class="material-symbols-rounded">build</span> Butiran Kerosakan</h3>
             
-            <!-- MAKLUMAT KEROSAKAN -->
             <div class="input-group">
                 <label for="maklumatKerosakan">Maklumat Kerosakan <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -468,7 +212,6 @@
                 </div>
             </div>
 
-            <!-- MAKLUMAT BOCOR/PECAH -->
             <div class="input-group">
                 <label for="maklumatBocorPecah">Maklumat Bocor/Pecah <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -549,11 +292,8 @@
             </div>
         </div>
 
-        <!-- Section: Pengesanan -->
         <div class="form-section">
-            <h3 class="section-title">
-                <span class="material-symbols-rounded">person_search</span> Pengesanan
-            </h3>
+            <h3 class="section-title"><span class="material-symbols-rounded">person_search</span> Pengesanan</h3>
             
             <div class="input-group">
                 <label for="dilaporkanOleh">Dilaporkan Oleh <span class="required">*</span></label>
@@ -573,7 +313,6 @@
                 </div>
             </div>
 
-            <!-- PEMBAIKAN KEPADA -->
             <div class="input-group">
                 <label for="pembaikanKepada">Pembaikan Kepada <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -593,7 +332,6 @@
                 </div>
             </div>
 
-            <!-- JENIS PENGESANAN -->
             <div class="input-group">
                 <label for="jenisPengesanan">Jenis Pengesanan <span class="required">*</span></label>
                 <div class="input-wrapper">
@@ -616,11 +354,9 @@
             </div>
         </div>
 
-        <!-- Section Keselamatan: Cloudflare Turnstile dengan Site Key yang Lengkap -->
         <div class="form-section center-content">
             <div class="cf-turnstile" data-sitekey="0x4AAAAAAESW6QgvNozKsaUK" data-theme="light"></div>
         </div>
-
     </form>
 </main>
 
@@ -633,7 +369,6 @@
     </button>
 </div>
 
-<!-- Modals -->
 <div id="modalOverlay" class="modal-overlay"></div>
 
 <div id="confirmModal" class="modal">
@@ -641,9 +376,7 @@
         <span class="material-symbols-rounded text-primary" style="font-size: 32px;">help</span>
         <h3>Sahkan Hantaran</h3>
     </div>
-    <div class="modal-body">
-        Adakah anda pasti butiran yang diisi adalah betul? Laporan akan direkodkan ke sistem.
-    </div>
+    <div class="modal-body">Adakah anda pasti butiran yang diisi adalah betul? Laporan akan direkodkan ke sistem.</div>
     <div class="modal-footer">
         <button id="btnCancelConfirm" class="btn btn-text">Batal</button>
         <button id="btnConfirmSubmit" class="btn btn-primary">Ya, Hantar</button>
@@ -664,7 +397,6 @@
         </div>
         <h3 class="mt-2 text-success">Berjaya!</h3>
         <p>Laporan NRW telah direkodkan.</p>
-        
         <div id="waSummaryBox" style="display:none; text-align:left; background:#f0f4f8; padding:12px; border-radius:8px; margin-top:16px; font-size:0.85rem; width: 100%; white-space: pre-wrap; border: 1px solid #d6e3ff; color: #1a1c1e;"></div>
     </div>
     <div class="modal-footer justify-center" style="flex-wrap: wrap; gap: 8px; margin-top: 8px;">
@@ -693,8 +425,6 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- 1. CLOCK LOGIC ---
     function updateClock() {
         const now = new Date();
         const options = { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
@@ -703,10 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateClock, 1000);
     updateClock();
 
-    // Set default date to today
     document.getElementById('tarikh').valueAsDate = new Date();
 
-    // --- 2. MODAL LOGIC ---
     const overlay = document.getElementById('modalOverlay');
     const confirmModal = document.getElementById('confirmModal');
     const loadingModal = document.getElementById('loadingModal');
@@ -730,15 +458,13 @@ document.addEventListener('DOMContentLoaded', function() {
         showModal(errorModal);
     }
 
-    // Modal Close Buttons
     document.getElementById('btnCloseError').addEventListener('click', hideAllModals);
     document.getElementById('btnCancelConfirm').addEventListener('click', hideAllModals);
     document.getElementById('btnCloseSuccess').addEventListener('click', () => {
         hideAllModals();
-        resetForm(); // Bersihkan borang setelah selesai hantar
+        resetForm();
     });
 
-    // --- 3. DYNAMIC ZONE / DMA LOGIC FROM CSV ---
     const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRGYHr1nEPgqFh5h0c6wwSg59GijJKUs_a_MrM96p5yRXtNvqtWPNiGKyK_NSuCaj4UNNq1lKlQM50x/pub?gid=145815817&single=true&output=csv";
     let zoneDataMap = {}; 
 
@@ -772,16 +498,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 opt.textContent = z;
                 zonSelect.appendChild(opt);
             });
-
         } catch (error) {
-            console.error("Error fetching CSV:", error);
-            zonSelect.innerHTML = '<option value="" disabled selected>Gagal memuatkan Zon (Semak sambungan)</option>';
+            zonSelect.innerHTML = '<option value="" disabled selected>Gagal memuatkan Zon</option>';
         }
     }
     
     fetchCSVData();
 
-    // --- 4. ZONE & DMA EVENT LISTENERS ---
     const zonSelect = document.getElementById('zon');
     const dmaSelect = document.getElementById('dma');
 
@@ -803,7 +526,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- 5. LOGIK RUANGAN "LAIN-LAIN" ---
     document.querySelectorAll('.has-other').forEach(selectEl => {
         selectEl.addEventListener('change', function() {
             const wrapperId = this.id + 'Lain-wrapper';
@@ -824,7 +546,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 6. AUTODETECT GPS GEOLOCATION ---
     document.getElementById('btnGps').addEventListener('click', function() {
         const coordInput = document.getElementById('coordinates');
         coordInput.placeholder = "Sedang mengesan lokasi semasa...";
@@ -852,7 +573,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- 7. RESET FORM LOGIC ---
     function resetForm() {
         const form = document.getElementById('nrwForm');
         form.reset();
@@ -861,12 +581,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.other-input input').forEach(i => i.required = false);
         dmaSelect.innerHTML = '<option value="" disabled selected>Sila pilih Zon dahulu</option>';
         dmaSelect.disabled = true;
-        
         if (typeof turnstile !== 'undefined') turnstile.reset();
     }
     document.getElementById('btnReset').addEventListener('click', resetForm);
 
-    // --- 8. SUBMISSION PROCESS (MENGGUNAKAN CLOUDFLARE PROXY) ---
     document.getElementById('btnSubmit').addEventListener('click', function() {
         const form = document.getElementById('nrwForm');
         if (!form.checkValidity()) {
@@ -896,18 +614,13 @@ document.addEventListener('DOMContentLoaded', function() {
             dataObj[key] = value;
         });
 
-        // KONFIGURASI PROXY CLOUDFLARE
         const CLOUDFLARE_WORKER_URL = "https://borangald.sainspdwater.workers.dev";
-        const SECRET_KEY = "SAINS_NRW_2026"; // Mesti sama dengan di Cloudflare
 
-        // Menggunakan fetch() API
         fetch(CLOUDFLARE_WORKER_URL, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(dataObj)
-})
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataObj)
+        })
         .then(response => response.json())
         .then(response => {
             hideAllModals();
@@ -918,7 +631,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (response.whatsappText) {
                     waSummaryBox.textContent = response.whatsappText;
-                    window.currentWaText = response.whatsappText; // Simpan teks secara global untuk fungsi salin/share
+                    window.currentWaText = response.whatsappText;
                     waSummaryBox.style.display = 'block';
                     btnCopyWa.style.display = 'inline-flex';
                     btnShareWa.style.display = 'inline-flex';
@@ -937,7 +650,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Fungsi Butang Salin
     document.getElementById('btnCopyWa').addEventListener('click', function() {
         if (window.currentWaText) {
             navigator.clipboard.writeText(window.currentWaText).then(() => {
@@ -945,16 +657,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.innerHTML = '<span class="material-symbols-rounded" style="font-size: 18px;">check</span> Disalin!';
                 setTimeout(() => { this.innerHTML = originalHtml; }, 2000);
             }).catch(err => {
-                console.error("Gagal menyalin teks: ", err);
                 alert("Gagal menyalin. Sila salin secara manual.");
             });
         }
     });
 
-    // Fungsi Butang WhatsApp
     document.getElementById('btnShareWa').addEventListener('click', function() {
         if (window.currentWaText) {
-            // Gunakan API WhatsApp untuk share text.
             const waUrl = 'https://wa.me/?text=' + encodeURIComponent(window.currentWaText);
             window.open(waUrl, '_blank');
         }
