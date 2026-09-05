@@ -902,13 +902,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Menggunakan fetch() API
         fetch(CLOUDFLARE_WORKER_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Secret-Key': SECRET_KEY
-            },
-            body: JSON.stringify(dataObj)
-        })
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dataObj)
+})
         .then(response => response.json())
         .then(response => {
             hideAllModals();
